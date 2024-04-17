@@ -8,8 +8,8 @@ ToothGrowth = ToothGrowth
 ToothGrowth$dose <- as.factor(ToothGrowth$dose)
 
 # specfiy that the two predictors supp & dose should use sum-to-zero contrasts
-contrasts(ToothGrowth$supp) <- bayestestR::contr.sum
-contrasts(ToothGrowth$dose) <- bayestestR::contr.sum
+contrasts(ToothGrowth$supp) <- contr.sum
+contrasts(ToothGrowth$dose) <- contr.sum
 
 # specify a formula to predict the length of teeth by the type of supplement and its dose
 formula <- bf(len ~ 1 + supp + dose + supp:dose)
@@ -50,4 +50,4 @@ brmsfit2 <- brm(formula2, ToothGrowth,
 
 # compare the two models to obtain evidence for or against the interaction
 BF <- bayes_factor(brmsfit2,brmsfit, cores = 4, repetitions = 10)
-1/BF
+BF
