@@ -35,7 +35,7 @@ conditional_effects(brmsfit)
 # test if a parameter is different from a value of interest (e.g. 0)
 results_hyp <- hypothesis(brmsfit, "dose1 = 0")
 plot(results_hyp)
-results_hyp$hypothesis$Evid.Ratio
+1/abs(results_hyp$hypothesis$Evid.Ratio)
 
 # specify a reduced model without the interaction
 formula2 <- bf(len ~ 1 + supp + dose)
